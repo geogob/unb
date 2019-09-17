@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: forms-1.3.0.jar
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.wb.swing.FormLayout.lib;singleton:=tr
+ ue
+Require-Bundle: org.eclipse.core.resources
+Bundle-Version: 1.0.0.r37x201106081552
+Export-Package: com.jgoodies.forms.builder,com.jgoodies.forms.debug,co
+ m.jgoodies.forms.factories,com.jgoodies.forms.layout,com.jgoodies.for
+ ms.util
+Bundle-ManifestVersion: 2
+
+Name: target.properties
+SHA1-Digest: ZK/ILivMPLcA9p60NerreoybAtU=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: forms-1.3.0-src.zip
+SHA1-Digest: dDFhP8dAhTrxIdU1Sg1fxt6bbDM=
+
+Name: forms-1.3.0.jar
+SHA1-Digest: cRGMHly86zH3ySvr1pAeJgpj9eU=
+
+Name: about.html
+SHA1-Digest: hV388OLt+Y/NfGTxERTivubQJ7o=
+
+Name: plugin.properties
+SHA1-Digest: BnRZ3DMqmdznAq5TIrL7/eE311Y=
+

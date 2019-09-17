@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="es.ucm.gaia.colibristudio.LibraryPool.CBRProjectNature"
+         name="CBR Project Nature"
+         point="org.eclipse.core.resources.natures">
+         <runtime>
+         <run
+               class="libraryPool.CBRProjectNature">
+         </run>
+         </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/colibristudio.png"
+            id="CBRProjectNatureImage"
+            natureId="es.ucm.gaia.colibristudio.LibraryPool.CBRProjectNature">
+      </image>
+   </extension>
+</plugin>

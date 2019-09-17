@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.ucm.gaia.colibristudio.COLIBRIStudioFeature"
+      label="COLIBRIStudio"
+      version="0.9.0"
+      provider-name="colibricbrstudio.net"
+      plugin="es.ucm.gaia.colibristudio.PerspectiveColibriStudio">
+
+   <description url="http://colibricbrstudio.net">
+      The ColibriStudio plugin provides a complete set of tools for
+developing CBR applications with the jCOLIRI framework.
+   </description>
+
+   <copyright url="http://colibricbrstudio.net/update/copyright">
+      Developed by Juan A. Recio-Garcia. 
+GAIA - Group for Artificial Intelligence Applications
+Universidad Complutense de Madrid. Spain
+   </copyright>
+
+   <license url="http://colibricbrstudio.net/update/license">
+      Distributed under the terms of the Creative Commons Attribution-NonCommercial
+3.0 Unported (CC BY-NC 3.0) license. http://creativecommons.org/licenses/by-nc/3.0/
+Legal text available at: http://creativecommons.org/licenses/by-nc/3.0/legalcode
+You are free:
+to Share — to copy, distribute and transmit the work
+to Remix — to adapt the work
+Under the following conditions:
+Attribution — You must attribute the work in the manner specified
+by the author or licensor (contact author for instructions).
+Noncommercial — You may not use this work for commercial purposes.
+Additional commercial licenses can be purchased on demand. Contact
+author for details.
+It is possible to access source code to extend COLIBRIStudio
+for academic use/research. Contact author to obtain the source
+code.
+Author: Juan A. Recio-Garcia jareciog@fdi.ucm.es
+   </license>
+
+   <url>
+      <update label="Colibri Studio Update" url="http://colibricbrstudio/update/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.eclipse.jdt"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.text"/>
+      <import plugin="org.eclipse.core.filebuffers"/>
+      <import plugin="org.eclipse.jdt.ui" version="3.5.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.5.2" match="greaterOrEqual"/>
+      <import plugin="org.apache.xerces"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="es.ucm.gaia.colibristudio.LibraryPool" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="es.ucm.gaia.colibristudio.ViewTemplateEditor" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="es.ucm.gaia.colibristudio.ViewCaseDesigner" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.logging" version="1.0.4" match="greaterOrEqual"/>
+      <import plugin="es.ucm.gaia.colibristudio.ViewSimilarity" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="es.ucm.gaia.colibristudio.ViewPlainTextConnector" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="es.ucm.gaia.colibristudio.ViewCaseBaseSelector" version="0.9.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.LibraryPool"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.PerspectiveColibriStudio"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.ViewCaseBaseSelector"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.ViewCaseDesigner"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.ViewColoursInfo"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.ViewPlainTextConnector"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.ViewSimilarity"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.ViewTemplateEditor"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ucm.gaia.colibristudio.WizardNewProject"
+         download-size="0"
+         install-size="0"
+         version="0.9.0"
+         unpack="false"/>
+
+</feature>
