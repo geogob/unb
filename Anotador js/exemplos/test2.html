@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta charset="utf-8">
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family:'Arial';
+      }
+      canvas{
+        border: 1px solid black;
+      }
+      #menu{
+        width: 800px;
+        height: 40px;
+        background-color: beige;
+        text-align: center;
+        font-size: 25px;
+      }
+      #left{
+        float: left;
+        margin-left: 15%;
+      }
+
+      #left i{
+        font-size: 20px;
+      }
+
+    </style>
+  </head>
+  <body data-rsssl=1>
+    <canvas id="myCanvas" width="800" height="800"></canvas>
+    <div id="menu">
+      <div id="left"> << Anterior</div>
+      <div id="left"><i>Instruções</i></div>
+      <div id="left">Próxima >> </div>
+    </div>
+    <div id="info">
+      
+    </div>
+
+    <script>
+      function verificaSefoiClassificada(){
+        //Essa função vai verificar se o txt da imagem existe (anotaçõ) caso exista carrega o txt e cria os retangulos na imagem.
+      }
+
+      //criando os retangulos
+      function retCreate(canvas, x,y,w,h){
+        var context = canvas.getContext('2d');
+        context.strokeStyle = "yellow";
+        context.lineWidth = 2;
+        context.strokeRect(x,y,w,h);
+        //preenchimento...
+        //context.fillStyle = "red";
+        //context.fillRect(x1-10,y1-10,20,20); //x, y , width, height
+        context.fill();//cria o elemnto
+      }
+
+      function writeMessage(canvas, message) {
+        var context = canvas.getContext('2d');
+        document.querySelector("#info").innerHTML = message;
+
+        //context.clearRect(0, 0, canvas.width, canvas.height);
+        //context.font = '18pt Arial';
+        //context.fillStyle = 'black';
+        //context.fillText(message, 10, 25);
+      }
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+
+      //Começa aqui...
+      var classificada = false;
+      var canvas = document.getElementById('myCanvas'); //pega o canvas
+      var context = canvas.getContext('2d'); // canvas context
+      var background = new Image();
+      var x1, y1, x2, y2;
+      background.src = "img/n1.jpg";
+      background.onload = function(){
+          context.drawImage(background,0,0);   
+      }
+
+      //evento que pega o clique do mouse
+      canvas.addEventListener('mousedown', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        x1 = mousePos.x;
+        y1 = mousePos.y; 
+        writeMessage(canvas, message);
+      }, false);
+
+      //evento que pega a movimentação do mouse
+      canvas.addEventListener('mouseup', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        writeMessage(canvas, message);
+        x2 = mousePos.x;
+        y2 = mousePos.y; 
+        w = x2-x1;
+        h = y2-y1;
+        if (w<0) {
+          w = w*(-1);
+        }
+
+        if (h<0) {
+          h = h*(-1);
+        }
+        retCreate(canvas, x1, y1, w, h);
+        //SALVAR EM UM ARRAY O X1, Y1 E O X2 E Y2
+
+      }, false);
+
+    </script>
+  </body>
+</html>

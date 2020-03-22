@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+    <title>PathoSpotter - Podócitos</title>
+  </head>
+  <body data-rsssl=1>
+    
+    <canvas id="myCanvas" width="800" height="800"></canvas>
+    <div id="menu">
+      <button onclick="reconstruir()" title="Pressione para carregar a imagem anterior"  id="left"> << Desfazer anotação do podócito</button>
+      
+      <button onclick="nextIMG()" title="Pressione para carregar a próxima imagem" id="right">Salvar e Ir para a próxima imagem >> </button>
+    </div>
+    <div id="info">
+    </div>
+
+<div title="Clique para aprender a usar a ferramenta"  class="popup" onclick="help()"> <div id="ajuda">Não sabe usar a ferramenta?<br><div id="clique">(Clique aqui)</div> </div></b>
+  <span class="popuptext" id="myPopup">
+   <center> <h2>Modo de Usar</h2></center>
+   
+<ol><h3>Como anotar um podócito?</h3>
+  <li>Posicione o cursor do mouse em uma extremidade bem próxima do podócito.</li>
+  <li>Pressione o botão esquerdo do mouse e o matenha pressionado.</li>
+  <li>Solte o botão em uma extremidade oposta. </li>
+  <li>Será formada uma caixa (<i>bounding box</i>) em torno do podócito.</li>
+  <li>Agora classifique o podócito de acordo com uma das opções que aparecerá na tela. </li>
+  <li>Pressione <b>Ok</b> para registrar a anotação do podócito.</li>
+  <li>Repita o processo até anotar todos os podócitos na imagem.</li>
+</ol>
+
+<ol><h3>Informações Adicionais</h3>
+  <li>Para finalizar a anotação de uma imagem pressione o botão <b>Salvar e Ir para a próxima imagem >></b>.</li>
+  <li>Clique em <b><< Desfazer anotação do podócito</b> para desconsiderar o(s) último(s) registros de podócitos.</li>
+  <li>Quando você clicar em <b><< Desfazer a anotação</b> o registro desconsiderado ficará da cor branca.</li>
+  <li>As caixas da cor azul são as anotações confirmadas e de cor branca, as anotações descartadas.</li>
+  <li>NÃO ATUALIZE A PÁGINA! Caso você não tenha salvo a anotação seu trabalho será perdido!</li>
+  <li>Dica: Para dar zoom pressione "CTRL +" ou "CTRL -".</li>
+</ol>
+<ol><h2>ATENÇÃO!</h2></ol>
+<ol><h3>Após anotar os podócitos em uma imagem não se esqueça de clicar em <b>Salvar e continuar</b></h3></ol>
+
+<ol><h3>Obrigado pela contribuição!</h3></ol>
+  </span>
+
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Classificação do podócito:</p>
+      <select name="opt" id="opt">
+        <option>Normal podocyte</option>
+        <option>Podocyte hypertrophy</option>
+        <option>Podocyte hyperplasia</option>
+        <option>Podocyte degeneration</option>
+    </select>
+ <!-- <button onclick="retApagar()" >Delete</button>-->
+  <button onclick="pegaclassificacao()">Ok</button>
+  </div>
+
+</div>
+
+    <script>
+      function nextIMG(){
+        if (pos>=sizeImgList-1) {
+          alert("Essa era a última imagem, muito obrigado!");
+        }else{
+            pos = pos+1;
+            carregaIMG(background);   
+        }
+        alert("Imagem salva com sucesso");
+        apagaArray();
+        
+      }
+
+      //function prevIMG(){
+        //if (pos<=0) {
+          //alert("Não há mais imagens anotadas anteriormente");
+        //}else{
+          //  pos = pos-1;
+            //carregaIMG(background);   
+        //}
+      //}
+
+      //Função para reconstuir o canvas sem o último retangulo criado
+      function reconstruir() {  
+        var context = canvas.getContext('2d');
+        
+        context.strokeStyle = "white";
+        context.lineWidth = 2;
+        context.strokeRect(dadosAnotados[dadosAnotados.length-5], dadosAnotados[dadosAnotados.length-4], dadosAnotados[dadosAnotados.length-3], dadosAnotados[dadosAnotados.length-2]);
+        context.fill();//cria o elemnto
+
+        //context.clearRect(0, 0, canvas.width, canvas.height); //limpa tudo
+        //removando a última anotação (último retângulo criado)
+        dadosAnotados.pop();dadosAnotados.pop();dadosAnotados.pop();dadosAnotados.pop();dadosAnotados.pop();dadosAnotados.pop();dadosAnotados.pop();
+        //alert(dadosAnotados);
+        //var context = canvas.getContext('2d');
+        //carregaIMG(background);
+
+        //alert(dadosAnotados.length);
+        //context.clearRect(0, 0, canvas.width, canvas.height );
+        //alert(dadosAnotados);
+        
+        //for (var i = 0; i < dadosAnotados.length; i+=7) {
+         // alert(dadosAnotados[i+1]);
+            //desenha os retângulos anteriores
+            
+          //  context.strokeStyle = "blue";
+          //  context.lineWidth = 2;
+           // context.strokeRect(dadosAnotados[i+2],dadosAnotados[i+3],dadosAnotados[i+4],dadosAnotados[i+5]);
+          //  context.fill();//cria o elemnto
+        //}
+        //carregaIMG(background);
+
+      }
+
+      function help() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+      }
+
+      function anotaArray(x, y, w, h, p){
+        dadosAnotados.push("[",p, x, y, w, h,"]");
+        //alert(dadosAnotados);
+      }
+
+      function apagaArray(){
+        dadosAnotados = [];
+      }
+      //apagar o retangulo
+      function retApagar(){
+        //context.clearRect(x, y, w, h);
+        context.strokeStyle = "white";
+        context.lineWidth = 2;
+        context.strokeRect(x,y,w,h);
+        //preenchimento...
+        context.fillStyle = null;
+        //context.fillRect(x1-10,y1-10,20,20); //x, y , width, height
+        context.fill();//cria o elemnto
+        modal.style.display = "none";//fecha a janela
+      }
+
+      //Acessar o que o usuário escolheu no select e mandar pro anotaArray
+      function pegaclassificacao(){
+        var label = document.getElementById("opt").value;
+        var p=0;
+        if (label=="Normal podocyte") {p=0;}
+        if (label=="Podocyte hypertrophy") {p=1;}
+        if (label=="Podocyte hyperplasia") {p=2;}
+        if (label=="Podocyte degeneration") {p=3;}
+        
+        anotaArray(x,y,w,h,p);//registra localização em um array
+        modal.style.display = "none";//fecha a janela
+        //alert(p);
+
+      }
+
+      //criando os retangulos
+      function retCreate(canvas){
+        var context = canvas.getContext('2d');
+        context.strokeStyle = "blue";
+        context.lineWidth = 2;
+        context.strokeRect(x,y,w,h);
+        //preenchimento...
+        //context.fillStyle = "red";
+        //context.fillRect(x1-10,y1-10,20,20); //x, y , width, height
+        context.fill();//cria o elemnto
+        //anotaArray(x,y,w,h, "p1");//registra localização em um array
+        //pegaclassificacao();
+      }
+
+      function writeMessage(canvas, message) {
+        var context = canvas.getContext('2d');
+        document.querySelector("#info").innerHTML = message;
+
+        //context.clearRect(0, 0, canvas.width, canvas.height);
+        //context.font = '18pt Arial';
+        //context.fillStyle = 'black';
+        //context.fillText(message, 10, 25);
+      }
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+
+      //COMEÇA AQUI...
+      var pos=0;
+      var x, y, h, w;
+      var x1, y1, x2, y2;
+      var classificada = false;
+      var dadosAnotados = new Array();
+      var imgList = new Array();//COLOCAR NOSMES DAS IMAGENS
+      imgList = ["img/n1.jpg", "img/n24.jpg", "img/n25.jpg"];
+      var sizeImgList = imgList.length;
+      var canvas = document.getElementById('myCanvas'); //pega o canvas
+
+      var context = canvas.getContext('2d'); // canvas context
+      
+      var background = new Image();
+      
+      function carregaIMG(background){
+        background.src = imgList[pos];//"img/n24.jpg";  
+      }
+      
+      carregaIMG(background);
+      
+      background.onload = function(){
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(background,0,0);   
+      }
+
+      //MODAL
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      //var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      //btn.onclick = function() {
+        //modal.style.display = "block";
+      //}
+
+      // When the user clicks on <span> (x), close the modal
+     // span.onclick = function() {
+        //modal.style.display = "none";
+      //}
+
+      // When the user clicks anywhere outside of the modal, close it
+     // window.onclick = function(event) {
+       // if (event.target == modal) {
+         // modal.style.display = "none";
+        //}
+      //}
+      //fim modal
+
+      //evento que pega o clique do mouse
+      canvas.addEventListener('mousedown', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        x1 = mousePos.x;
+        y1 = mousePos.y; 
+
+        writeMessage(canvas, message);
+      }, false);
+
+      //evento quando solta o mouse
+      canvas.addEventListener('mouseup', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+       // var x,y;
+        writeMessage(canvas, message);
+        x2 = mousePos.x;
+        y2 = mousePos.y; 
+        w = x2-x1;
+        h = y2-y1;
+        if (w<0) {
+          w = w*(-1);
+        }
+
+        if (h<0) {
+          h = h*(-1);
+        }
+
+        //a partir de qual ponto eu devo criar o retangulo?
+        if(x1<x2 && y1<y2){
+          x = x1;
+          y = y1;
+        }
+
+        if (x1>x2 && y1<y2) {
+          x = x2;
+          y = y1;  
+        }
+
+        if (x1<x2 && y1>y2) {
+          x = x1;
+          y = y2;  
+        }
+
+        if (x1>x2 && y1>y2) {
+          x = x2;
+          y = y2;  
+        }
+
+        retCreate(canvas)
+        //retCreate(canvas, x, y, w, h);
+        modal.style.display = "block";
+
+      }, false);
+
+    </script>
+  </body>
+</html>

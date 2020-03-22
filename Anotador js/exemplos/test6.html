@@ -1,0 +1,13 @@
+<script language="javascript">
+    function ChamarLink() {
+        var valorCombo = document.getElementById("selectOK").value;
+        document.getElementById("receberLink").innerHTML = "<a href='Teste.asp?qual="+valorCombo+"'>agora sim</a>";
+    }
+</script>
+<select id="selectOK" name="selectOK" onchange="ChamarLink();">
+    <option value="">Selecione</option>
+    <option value="01">Valor 01</option>
+    <option value="02">Valor 02</option>
+</select>
+<br>
+<div id="receberLink"></div>

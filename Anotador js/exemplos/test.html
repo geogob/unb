@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+
+</head>
+<body>
+   <script type="text/javascript">
+  var stage = document.createElement("canvas");
+  stage.width = 800;
+  stage.height = 800;
+  stage.style.background = "rgba(0,0,0,1)";
+  document.body.appendChild(stage);
+
+  //variávis de controle
+  var cnv = stage.getContext("2d"); //Canvas context
+  var w = stage.width;
+  var h = stage.height;
+  var r = 30;
+  var angle = 0;
+  var colorPacMan = "orange";
+  var opening = true;
+  var interval = 100;
+  //draw();
+  //inserindo forma
+  function draw(){
+      //cnv.fillStyle = "green";
+      cnv.strokeStyle = colorPacMan; //cor da borda
+      cnv.arc(w/2, h/2, r, 0, Math.PI*2); //formato
+      cnv.lineWidth = 10; //expessura da borda
+      cnv.stroke(); //cria a borda
+      cnv.fill();
+  }
+
+  function animate(){
+    setInterval(function(){
+        draw();
+    }, interval);
+  }
+
+draw();
+
+   </script>
+</body>
+</html>

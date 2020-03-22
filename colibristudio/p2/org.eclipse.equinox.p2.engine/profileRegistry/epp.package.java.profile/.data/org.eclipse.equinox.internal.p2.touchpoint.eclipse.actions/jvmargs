@@ -1,4 +1,0 @@
-#Wed Jun 15 02:25:53 EDT 2011
--Xms=40m,40m
--XX\:MaxPermSize\==256m
--Xmx=256m,384m

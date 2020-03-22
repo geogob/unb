@@ -1,0 +1,23 @@
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    function gravar(){
+
+        $.ajax({
+            method: "post",
+            url: "gravar.php",
+            data: $("#form").serialize(),
+        success: function(data){
+                   alert(data);
+        }
+
+    });
+    }
+</script>
+</head>
+<body>
+<form id="form" action="" onsubmit="gravar(); return false;">
+  id: <input type="text" id="ident" name="id" />
+  pass: <input type="password" id="pass" name="pass" />
+  email:<input type="email" id="em" name="email"/>
+ <input type="submit">
+</form>
