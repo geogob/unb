@@ -1,0 +1,9 @@
+- Faça aparecer um background no valor de pixel que eu clicar.
+- Dica: Use conversõ para outro espaço e normalize, lembre-se de desconsiderar o canal de intensidade.
+- Usar o HSV sem o V
+- Usar YUV sem o Y
+- https://en.wikipedia.org/wiki/CIE_1931_color_space
+- https://docs.opencv.org/master/db/d28/tutorial_cascade_classifier.html
+- blur-> convolução com gaussiana pra deixar a imagem mais macia sem ruído
+- https://docs.opencv.org/master/d7/da8/tutorial_table_of_content_imgproc.html
+- https://docs.opencv.org/master/db/d28/tutorial_cascade_classifier.html
