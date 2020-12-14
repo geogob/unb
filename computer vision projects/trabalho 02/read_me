@@ -1,0 +1,30 @@
+
+Olá!
+
+Para executar os modelos que foram salvos, acesse o seguinte link para o JUPYTER NOTEBOOK NO COLAB:
+
+https://colab.research.google.com/drive/16xjxChuux4_7rZZ3yCbWNGMxvgncumrl?usp=sharing
+
+Foram salvos os modelos: RESNET34, RESNET101 E DENSENET201.
+
+Para testar os modelos basta baixá-los neste link: https://drive.google.com/drive/folders/1rQWknzBQY1M02oXD9vYOIrSnH2wVN3D7?usp=sharing
+
+No link, você encontrará também, algumas imagens para testar nos modelos. Estas imagens não foram utilizadas nos conjuntos de treino e teste.
+
+APÓS BAIXAR OS MODELOS, siga os seguintes comandos:
+
+#Importe a biblioteca do fastai para conseguir carregar: load_learner.
+
+#carregando o modelo:
+modelo = load_learner('/content/drive/MyDrive/Colab Notebooks/resnet34_model_saved')
+
+#classsficando uma imagem em especial
+modelo.predict('/content/drive/MyDrive/dataset-classification/test/com/image0431.tif.jpg')
+
+Infelismente não foio possível disponibilizar o dataset para retreinar os modelos. Não tenho a permissão, pois são imagens da Fiocruz-BA.
+
+Obs: O professor já está sabendo disso.
+
+Também enviou a versão .py além do jupyter notebook, poré, entendo que o ideal é utilizar o jupyter notebook,
+
+SOBRE O RELATÓRIO: Fiz no overleaf. Não entendo, mas não consegui baixar os arquivos da plataforma. Em todas as tentativas baixava o modelo padrão sem os meus arquivos e alterações. Logo, estou compartilhando o link do projeto: https://www.overleaf.com/1223584949swrmsqqhvgrw

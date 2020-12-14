@@ -51,7 +51,7 @@ def click_event(event, x, y, flags, params):
 if __name__=="__main__": 
 
 	# reading the image 
-	img = cv2.imread('/home/george/unb/computer vision projects/trabalho 01/frames camera 2/kang189.jpg', 1)
+	img = cv2.imread('/home/george/unb/computer vision projects/trabalho 01/disparity/right-frame.jpg', 1)
 
 	# displaying the image 
 	cv2.imshow('image', img) 
