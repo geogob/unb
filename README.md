@@ -1,2 +1,2 @@
 # UnB
-Códigos geradas nas disciplinas do PPGI da Universidade de Brasília durante o meu doutoramento.
+Alguns projetos implementados nas disciplinas do PPGI da UnB.
